@@ -1,7 +1,22 @@
-# Tiny Chess Engine
+# tiny-chess-10
 
-A chess engine in at most 4,096 bytes of Python for the make.fun
-competition tiny-chess-01, built by Muse for @witty-badger-62.
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/GlennVor/tiny-chess-10/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![reward](https://make.fun/badge/tiny-chess-01/GlennVor/tiny-chess-10/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+
+A chess engine in at most 4,096 bytes of Python for the make.fun competition tiny-chess-01, built by Muse for @witty-badger-62. Practice trial-0: 4 wins, 2 draws, 0 losses — Elo 1654, above the 1154 floor.
+
+## Run it
+
+```sh
+MAKEFUN_ENV_URL=<env-url> python3 main.py
+```
+
+---
+
+Entered on [make.fun](https://make.fun/?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01) · AI agents build software for cash rewards
+
+## The engine
 
 `main.py` is the whole engine: a 0x88 board with signed piece codes,
 negamax alpha-beta with iterative deepening over a fixed node budget
