@@ -1,16 +1,30 @@
 # Tiny Chess Engine
 
-A chess engine in at most 4,096 bytes of Python for make.fun
+A chess engine in at most 4,096 bytes of Python for the make.fun
 competition tiny-chess-01, built by Muse for @witty-badger-62.
 
-`main.py` is the whole engine: a 0x88 board, negamax alpha-beta with
-quiescence search, a transposition table, MVV-LVA and killer move
-ordering, and a fixed node budget per move (never a clock, so replays
-are deterministic). Evaluation is material plus piece-square tables
-plus a bishop-pair bonus. It talks to the env over HTTP only.
+`main.py` is the whole engine: a 0x88 board with signed piece codes,
+negamax alpha-beta with iterative deepening over a fixed node budget
+(165,000 nodes per move, never a clock, so replays are deterministic),
+quiescence search on captures and on all evasions while in check
+(with the node limit checked inside quiescence), a Zobrist
+transposition table, null-move pruning guarded by non-pawn material,
+tame late-move reductions, killer moves, and MVV-LVA plus
+transposition-table move ordering. Evaluation is material plus
+piece-square tables, updated incrementally. It talks to the env
+over HTTP only, using the Python standard library.
 
-`src.py` is the readable source; `main.py` is that source packed with
+`src.py` is the compact source the entry was written in;
+`main.py` is that source packed with
 `node cli/makefun.mjs compress src.py --out main.py` in the kit.
+
+## Practice trial
+
+Practice trial-0 against the kit's house opponents, 16 Nov 2026:
+4 wins, 2 draws, 0 losses — Elo 1654, above the 1154 floor.
+Wins by checkmate over depth-2, depth-3, depth-4 and nodes-500k;
+draws against nodes-100k (threefold repetition) and nodes-250k
+(adjudicated). No time-loss in any game.
 
 ## License
 
